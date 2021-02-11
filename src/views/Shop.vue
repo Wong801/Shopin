@@ -1,7 +1,11 @@
 <template>
   <Header />
   <div class="wraper">
-    <div class="item" v-bind:key="item.id" v-for="item in shop">
+    <div class="item" 
+    v-for="item in items"
+    v-bind:item="item"
+    v-bind:key="item._id" 
+    >
       <img :src="item.imgURL" :alt="item.title">
       <a href="#">
         <div class="detail">
@@ -21,6 +25,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
+import ItemService from '../ItemService'
 
 export default {
   name: 'Shop',
@@ -30,46 +35,19 @@ export default {
   }, 
   data() {
     return {
-      shop: [
-        {
-          id: 1,
-          imgURL: '',
-          title: 'Produk 1',
-          price: 100000
-        },
-        {
-          id: 2,
-          imgURL: '',
-          title: 'Produk 2',
-          price: 200000
-        },
-        {
-          id: 3,
-          imgURL: '',
-          title: 'Produk 3',
-          price: 1000000
-        },
-        {
-          id: 4,
-          imgURL: '',
-          title: 'Produk 4',
-          price: 500000
-        },
-        {
-          id: 5,
-          imgURL: '',
-          title: 'Produk 5',
-          price: 675000
-        },
-        {
-          id: 6,
-          imgURL: '',
-          title: 'Produk 6',
-          price: 1500000
-        },
-      ]
+      items: [],
+      error: '',
+      title: '',
+      price: ''
     }
-  }
+  },
+  async created() {
+    try {
+      this.items = await ItemService.getPosts();
+    } catch(err) {
+      this.error = err.message;
+    }
+  },
 }
 </script>
 
@@ -82,7 +60,7 @@ export default {
   .item 
     border: 1px solid #eaeaea
     box-shadow: 5px 5px 10px 2px #eaeaea
-    width: 30vw
+    width: 25vw
     margin: 20px 0
     border-radius: 10px
     padding: 20px
@@ -102,5 +80,4 @@ export default {
         &:hover 
           cursor: pointer 
           background-color: #87cbff
-
 </style>
