@@ -5,7 +5,7 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development (use command "cd portfolio" first)
 ```
 npm run serve
 ```
@@ -18,7 +18,7 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Starting database server 
+### Starting database server (make sure to do this in root directory)
 ```
 npm run dev
 ```
