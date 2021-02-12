@@ -5,7 +5,7 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development (use command "cd portfolio" first)
+### Compiles and hot-reloads for development (use command "cd portfolio" if command below won't run)
 ```
 npm run serve
 ```
